@@ -1,6 +1,6 @@
 /*
  * File: app/layout.tsx
- * Author: [Member A name]
+ * Author: Ahamid Adam
  * Date: October 29, 2026
  * This file defines the shared layout of the application.
  * It receives the current page through the children prop.
