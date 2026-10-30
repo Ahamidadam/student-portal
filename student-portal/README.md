@@ -11,7 +11,7 @@ Student data is held in memory and resets to the eight sample students when the 
 | B | Habin Park | Student data and interface, StudentList and StudentCard |
 | C | Pinhung Chiang | StudentPortal state and callbacks, SearchBox, AddStudent and home page integration |
 
-The component directory is `components/`. The original `Componets/` directory was renamed and the layout imports were updated to match.
+The active component directory is `components/`, and the layout imports point there. The original `Componets/` directory is retained as an unused copy of the earlier group files.
 
 ## Run locally
 
