@@ -1,6 +1,6 @@
 /*
  * File: components/StatsPanel.tsx
- * Author: [Member A name]
+ * Author: Ahamid Adam
  * Date: October 29, 2026
  * This component displays three statistics about the school.
  * Its props provide the total students, honour roll count, and graduating count.

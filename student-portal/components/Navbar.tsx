@@ -1,6 +1,6 @@
 /*
  
- * Author: Ahamid
+ * Author: Ahamid Adam
  * Date: October 29, 2026
  * This component displays the school name and navigation links.
  * It does not receive props.

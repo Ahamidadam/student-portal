@@ -1,4 +1,3 @@
-
 /*
 File: StudentList.tsx
 Author: Habin Park
@@ -16,33 +15,26 @@ import type { Student } from "@/data/students";
 
 // Props for StudentList
 interface StudentListProps {
-    students: Student[];
-    onRemove: (id: number) => void;
+  students: Student[];
+  onRemove: (id: number) => void;
 }
 
 const StudentList = ({ students, onRemove }: StudentListProps) => {
-
   // Check if the list is empty
-    if (students.length === 0) {
+  if (students.length === 0) {
     return (
-        <p className="text-center text-gray-500 p-5">
-        No students to show.
-        </p>
+      <p className="text-center text-gray-500 p-5">No students to show.</p>
     );
-    }
+  }
 
   // Show all students
-    return (
+  return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {students.map((student) => (
-        <StudentCard
-            key={student.id}
-            student={student}
-            onRemove={onRemove}
-        />
-        ))}
+      {students.map((student) => (
+        <StudentCard key={student.id} student={student} onRemove={onRemove} />
+      ))}
     </div>
-    );
+  );
 };
 
 export default StudentList;

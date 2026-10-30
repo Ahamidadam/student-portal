@@ -1,6 +1,6 @@
 /*
  * File: components/Footer.tsx
- * Author: [Member A name]
+ * Author: Ahamid Adam
  * Date: October 29, 2026
  * This component displays the school's contact information.
  * It does not receive props or store state.

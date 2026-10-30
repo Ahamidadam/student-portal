@@ -33,7 +33,7 @@ npm run start
 
 ## Deployment
 
-Deployed website: not deployed yet. The group still needs to deploy the app to Vercel and replace this line with the working URL before submitting.
+Deployed website:https://student-portal-asjj.vercel.app
 
 Set the Vercel root directory to `student-portal` because the Next.js app is inside that folder. Use `npm run build` as the build command.
 
