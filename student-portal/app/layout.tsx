@@ -10,8 +10,8 @@
  */
 
 import type { ReactNode } from "react";
-import Navbar from "@/Componets/Navbar";
-import Footer from "@/Componets/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 // Describe the page content received from Next.js.
