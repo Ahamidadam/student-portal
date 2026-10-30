@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# New Generation High School Student Portal
 
-## Getting Started
+A single-page Next.js app for viewing, searching, adding and removing students.
+Student data is held in memory and resets to the eight sample students when the page is refreshed.
 
-First, run the development server:
+## Group members
+
+| Member | Name | Work |
+| --- | --- | --- |
+| A | Ahamid Adam | Shared layout, Navbar, Footer, StatsPanel and overall styling |
+| B | Habin Park | Student data and interface, StudentList and StudentCard |
+| C | Pinhung Chiang | StudentPortal state and callbacks, SearchBox, AddStudent and home page integration |
+
+The component directory is `components/`. The original `Componets/` directory was renamed and the layout imports were updated to match.
+
+## Run locally
+
+From the repository root:
 
 ```bash
+cd student-portal
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+Deployed website: not deployed yet. The group still needs to deploy the app to Vercel and replace this line with the working URL before submitting.
 
-To learn more about Next.js, take a look at the following resources:
+Set the Vercel root directory to `student-portal` because the Next.js app is inside that folder. Use `npm run build` as the build command.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Browser test checklist
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Tested on October 30, 2026 using headless Chromium against the production build. The starting data contains eight students, five on the honour roll and two in grade 12.
 
-## Deploy on Vercel
+| # | Test | Result | Observed behaviour |
+| --- | --- | --- | --- |
+| 1 | Open the app | Pass | All eight sample students appear. Students, Honour roll and Graduating show 8, 5 and 2. |
+| 2 | Show and hide details on one card | Pass | John Smith shows 85% and an Honour roll badge. Only that card opens; clicking Hide details closes it. Emma Wilson has no badge at 78%. |
+| 3 | Remove a grade 12 student | Pass | Removing Sarah Kim leaves seven students. The totals change to 7, 4 and 1. |
+| 4 | Search with an uppercase last name, then clear | Pass | WILSON shows only Emma Wilson. Clearing the search restores all remaining cards. |
+| 5 | Search for zzz | Pass | No students to show appears. The three totals stay unchanged. |
+| 6 | Add with an empty first name | Pass | No student is added. A first name containing only spaces is also ignored. |
+| 7 | Add a student with all four inputs | Pass | Alex Test, grade 12 and average 90, appears. Totals update, names clear, grade resets to 9 and average to 70. |
+| 8 | Clear all | Pass | No students to show appears and all three totals become 0. |
+| 9 | Narrow the browser to phone width | Pass | At 320, 375 and 390 pixels the cards use one column with no horizontal scrolling. At 1280 pixels there are three columns. |
+| 10 | Click each navbar link | Pass | Overview, Students and Add a student navigate to the corresponding visible section and URL fragment. |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Additional checks passed: adding after Clear all, rejecting a cleared average and grade 13, accepting an average of 0 or 80.5, and removing one newly added student without removing the other. No browser console errors or uncaught page errors were observed. ESLint and the production build, including TypeScript checking, passed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Component behaviour
+
+StudentPortal owns the list and search text. Counts and filtered results are calculated from that list on each render. Children request additions and removals through typed callback props. Updates create new arrays; a new student's id is greater than every id currently in the list.
+
+The add panel uses controlled inputs and a button click. There is no form submission, external data request or persistent storage in this assignment.
